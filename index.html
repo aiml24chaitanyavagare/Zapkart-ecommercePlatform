@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZAPKART — Shop Everything</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="topstrip">🎉 MEGA SALE — UP TO 80% OFF | FREE DELIVERY ABOVE ₹499 | USE CODE: ZAP20 FOR EXTRA 20% OFF 🎉</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">ZAPKART</div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search for clothes, shoes, jewellery, electronics..." onkeyup="liveSearch(this.value)"/>
+      <button onclick="doSearch()">🔍 Search</button>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn login">👤 Login</button>
+      <button class="nav-btn cart" onclick="openCart()">🛒 Cart <span class="cart-num" id="cart-count">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <div class="cat-tab active" onclick="setMainCat(this,'all')">🏠 Home</div>
+    <div class="cat-tab" onclick="setMainCat(this,'clothing')">👗 Clothing</div>
+    <div class="cat-tab" onclick="setMainCat(this,'shoes')">👟 Shoes</div>
+    <div class="cat-tab" onclick="setMainCat(this,'jewellery')">💍 Jewellery</div>
+    <div class="cat-tab" onclick="setMainCat(this,'electronics')">📱 Electronics</div>
+    <div class="cat-tab" onclick="setMainCat(this,'bags')">👜 Bags</div>
+    <div class="cat-tab" onclick="setMainCat(this,'beauty')">💄 Beauty</div>
+    <div class="cat-tab" onclick="setMainCat(this,'skincare')">✨ Skincare</div>
+    <div class="cat-tab" onclick="setMainCat(this,'sports')">🏋️ Sports</div>
+    <div class="cat-tab" onclick="setMainCat(this,'kids')">🎒 Kids</div>
+    <div class="cat-tab" onclick="setMainCat(this,'home')">🏡 Home &amp; Living</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero main" style="margin-top:1.5rem">
+  <div class="hero-main">
+    <div class="hero-slides" id="hero-slides">
+      <div class="hero-slide slide1">
+        <div class="hero-slide-txt">
+          <span class="tag">✨ NEW DROP 2025</span>
+          <h2>STREET DRIP<br>COLLECTION</h2>
+          <p>Bold fits for bold souls. Gen Z approved.</p>
+          <button class="nav-btn login" style="border-color:#abbe16;color:#fff;" onclick="scrollToProducts()">Shop Now →</button>
+        </div>
+        <div class="slide-emoji">👟</div>
+        <div class="slide-dots">
+          <div class="dot active" onclick="goSlide(0)"></div>
+          <div class="dot" onclick="goSlide(1)"></div>
+          <div class="dot" onclick="goSlide(2)"></div>
+          <div class="dot" onclick="goSlide(3)"></div>
+        </div>
+      </div>
+      <div class="hero-slide slide2">
+        <div class="hero-slide-txt">
+          <span class="tag">💍 TRENDING NOW</span>
+          <h2>JEWELLERY<br>GOALS</h2>
+          <p>Chunky chains, hoops &amp; more. Slay every day.</p>
+          <button class="nav-btn login" style="border-color:#fff;color:#fff;" onclick="scrollToProducts()">Explore →</button>
+        </div>
+        <div class="slide-emoji">💍</div>
+      </div>
+      <div class="hero-slide slide3">
+        <div class="hero-slide-txt">
+          <span class="tag">🔥 MEGA SALE</span>
+          <h2>UP TO 80%<br>OFF TODAY</h2>
+          <p>Don't sleep on these deals. Limited time only!</p>
+          <button class="nav-btn login" style="border-color:#333;color:#333;" onclick="scrollToProducts()">Grab Deals →</button>
+        </div>
+        <div class="slide-emoji">🛍️</div>
+      </div>
+      <div class="hero-slide slide4">
+        <div class="hero-slide-txt">
+          <span class="tag">👗 WOMEN'S EDIT</span>
+          <h2>KURTAS &amp;<br>CO-ORDS</h2>
+          <p>Festive season fits that hit different.</p>
+          <button class="nav-btn login" style="border-color:#fff;color:#fff;" onclick="scrollToProducts()">View Edit →</button>
+        </div>
+        <div class="slide-emoji">👗</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="hero-side-card sc1" onclick="filterGender('women',null)">
+      <div><h3>Women's</h3><p>New arrivals 🌸</p></div>
+      <div class="sc-emoji">👩</div>
+    </div>
+    <div class="hero-side-card sc2" onclick="filterGender('kids',null)">
+      <div><h3>Kids Zone</h3><p>Cute &amp; fun picks 🎈</p></div>
+      <div class="sc-emoji">🧒</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar sa">
+    <div class="marquee-inner">
+      <span>FREE DELIVERY</span><span class="mdot">⭐</span>
+      <span>10 LAKH+ HAPPY CUSTOMERS</span><span class="mdot">⭐</span>
+      <span>EASY RETURNS</span><span class="mdot">⭐</span>
+      <span>SECURE PAYMENTS</span><span class="mdot">⭐</span>
+      <span>AUTHENTIC PRODUCTS</span><span class="mdot">⭐</span>
+      <span>24/7 SUPPORT</span><span class="mdot">⭐</span>
+      <span>FREE DELIVERY</span><span class="mdot">⭐</span>
+      <span>10 LAKH+ HAPPY CUSTOMERS</span><span class="mdot">⭐</span>
+      <span>EASY RETURNS</span><span class="mdot">⭐</span>
+      <span>SECURE PAYMENTS</span><span class="mdot">⭐</span>
+      <span>AUTHENTIC PRODUCTS</span><span class="mdot">⭐</span>
+      <span>24/7 SUPPORT</span><span class="mdot">⭐</span>
+    </div>
+  </div>
+
+  <!-- GENDER TABS -->
+  <div class="gender-tabs sa">
+    <div class="g-tab all active" onclick="filterGender('all',this)">🌈 All</div>
+    <div class="g-tab men" onclick="filterGender('men',this)">👨 Men</div>
+    <div class="g-tab women" onclick="filterGender('women',this)">👩 Women</div>
+    <div class="g-tab kids" onclick="filterGender('kids',this)">🧒 Kids</div>
+  </div>
+
+  <!-- CATEGORY ICON GRID -->
+  <div class="cat-icons sa">
+    <div class="cat-icon-card" onclick="filterCat('clothing')"><div class="cat-icon-emoji">👗</div><div class="cat-icon-label">Clothing</div></div>
+    <div class="cat-icon-card" onclick="filterCat('shoes')"><div class="cat-icon-emoji">👟</div><div class="cat-icon-label">Shoes</div></div>
+    <div class="cat-icon-card" onclick="filterCat('jewellery')"><div class="cat-icon-emoji">💍</div><div class="cat-icon-label">Jewellery</div></div>
+    <div class="cat-icon-card" onclick="filterCat('electronics')"><div class="cat-icon-emoji">📱</div><div class="cat-icon-label">Electronics</div></div>
+    <div class="cat-icon-card" onclick="filterCat('beauty')"><div class="cat-icon-emoji">💄</div><div class="cat-icon-label">Beauty</div></div>
+    <div class="cat-icon-card" onclick="filterCat('sports')"><div class="cat-icon-emoji">🏋️</div><div class="cat-icon-label">Sports</div></div>
+    <div class="cat-icon-card" onclick="filterCat('bags')"><div class="cat-icon-emoji">👜</div><div class="cat-icon-label">Bags</div></div>
+    <div class="cat-icon-card" onclick="filterCat('watches')"><div class="cat-icon-emoji">⌚</div><div class="cat-icon-label">Watches</div></div>
+    <div class="cat-icon-card" onclick="filterCat('sunglasses')"><div class="cat-icon-emoji">🕶️</div><div class="cat-icon-label">Eyewear</div></div>
+    <div class="cat-icon-card" onclick="filterCat('fragrances')"><div class="cat-icon-emoji">🌸</div><div class="cat-icon-label">Fragrance</div></div>
+    <div class="cat-icon-card" onclick="filterCat('skincare')"><div class="cat-icon-emoji">🧴</div><div class="cat-icon-label">Skincare</div></div>
+    <div class="cat-icon-card" onclick="filterCat('toys')"><div class="cat-icon-emoji">🧸</div><div class="cat-icon-label">Toys</div></div>
+    <div class="cat-icon-card" onclick="filterCat('home')"><div class="cat-icon-emoji">🏡</div><div class="cat-icon-label">Home</div></div>
+  </div>
+
+  <!-- DEALS BANNER -->
+  <div class="deals-banner sa">
+    <div class="deals-title">
+      <h3>⚡ DEALS OF THE DAY</h3>
+      <p>Hurry up! Offers ending soon</p>
+    </div>
+    <div class="timer">
+      <div class="timer-box"><div class="timer-num" id="th">05</div><div class="timer-lbl">Hrs</div></div>
+      <div class="timer-box"><div class="timer-num" id="tm">30</div><div class="timer-lbl">Min</div></div>
+      <div class="timer-box"><div class="timer-num" id="ts">00</div><div class="timer-lbl">Sec</div></div>
+    </div>
+    <div class="deals-badge"><p>FLAT OFF</p><strong>80%</strong></div>
+  </div>
+
+  <!-- TRENDING CHIPS -->
+  <div class="trending-scroll sa">
+    <div class="trend-chip active" onclick="setTrend(this)">🔥 All Trending</div>
+    <div class="trend-chip" onclick="setTrend(this)">👕 Oversized Tees</div>
+    <div class="trend-chip" onclick="setTrend(this)">👟 Chunky Sneakers</div>
+    <div class="trend-chip" onclick="setTrend(this)">👗 Co-ord Sets</div>
+    <div class="trend-chip" onclick="setTrend(this)">💍 Chain Jewellery</div>
+    <div class="trend-chip" onclick="setTrend(this)">👖 Cargo Pants</div>
+    <div class="trend-chip" onclick="setTrend(this)">🧢 Bucket Hats</div>
+    <div class="trend-chip" onclick="setTrend(this)">✨ Y2K Vibes</div>
+  </div>
+
+  <!-- PRODUCTS SECTIONS -->
+  <div id="products-section">
+    <div class="sec-header sa">
+      <h2>🔥 <span>Trending</span> Right Now</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="products-grid"></div>
+
+    <!-- OFFER BANNERS -->
+    <div class="offer-banners sa">
+      <div class="offer-card oc1" onclick="filterGender('men',null)">
+        <h3>Men's Mega Sale</h3>
+        <p>Shirts, Jeans, Shoes &amp; more</p>
+        <span class="off-tag">UP TO 70% OFF</span>
+        <div class="oc-emoji">👔</div>
+      </div>
+      <div class="offer-card oc2" onclick="filterGender('women',null)">
+        <h3>Women's Edit</h3>
+        <p>Kurtas, Dresses, Jewellery</p>
+        <span class="off-tag">UP TO 75% OFF</span>
+        <div class="oc-emoji">👗</div>
+      </div>
+      <div class="offer-card oc3" onclick="filterGender('kids',null)">
+        <h3>Kids' Zone</h3>
+        <p>Clothes, Shoes, Toys &amp; more</p>
+        <span class="off-tag">UP TO 60% OFF</span>
+        <div class="oc-emoji">🎒</div>
+      </div>
+    </div>
+
+    <div class="sec-header sa">
+      <h2>💍 <span>Jewellery</span> Collection</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="jewellery-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>👟 <span>Shoes</span> You'll Love</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="shoes-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>📱 <span>Electronics</span> &amp; Gadgets</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="elec-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>👜 <span>Bags</span> &amp; Accessories</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="bags-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>🏋️ <span>Sports</span> &amp; Fitness</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="sports-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>✨ <span>Skincare</span> Essentials</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="skincare-grid"></div>
+
+    <div class="sec-header sa">
+      <h2>💄 <span>Beauty</span> &amp; Fragrance</h2>
+      <a href="#">See All →</a>
+    </div>
+    <div class="products-grid sa" id="beauty-grid"></div>
+  </div>
+
+</div><!-- /.main -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>ZAPKART</h4>
+      <a href="#">About Us</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="#">Track Order</a><a href="#">Returns</a><a href="#">Refund Policy</a><a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="#">Men's Fashion</a><a href="#">Women's Fashion</a><a href="#">Kids' Fashion</a><a href="#">Jewellery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">📷 Instagram</a><a href="#">🎵 TikTok</a><a href="#">▶️ YouTube</a><a href="#">🐦 Twitter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 ZAPKART · Made with 💜 for the Gen Z generation</div>
+</footer>
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeCart()"></div>
+
+<!-- CART SIDEBAR -->
+<div id="cart-sidebar">
+  <div class="cs-head">
+    <h2>🛒 My Cart</h2>
+    <button class="cs-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cs-items" id="cart-items-container">
+    <div class="cs-empty">
+      <div class="cs-empty-emoji">🛒</div>
+      <p style="font-weight:700;font-size:1rem;margin-bottom:.5rem">Your cart is empty!</p>
+      <p style="font-size:.85rem">Add items to get started 🔥</p>
+    </div>
+  </div>
+  <div id="cart-footer" style="display:none" class="cs-foot">
+    <div class="cs-total"><span>Total Amount</span><span id="cart-total">₹0</span></div>
+    <button class="checkout-btn">Proceed to Checkout 🚀</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">✅ Added!</div>
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+</body>
+</html>
+<!-- EMERGENCY CALL BUTTON -->
+<a href="tel:+919209009421" class="emergency-btn" title="Emergency Call">
+  📞 Emergency
+</a>
